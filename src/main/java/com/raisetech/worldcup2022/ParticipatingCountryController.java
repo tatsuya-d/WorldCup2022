@@ -1,4 +1,4 @@
-package com.raisetech.worldCup2022;
+package com.raisetech.worldcup2022;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +16,7 @@ public class ParticipatingCountryController {
     }
 
     @GetMapping("/participatingCountry/{id}")
-    public Optional<ParticipatingCountry> selectNumber(@PathVariable("id")int id) {
+    public Optional<ParticipatingCountry> selectParticipatingCountry(@PathVariable("id")int id) {
         return participatingCountryMapper.findById(id);
     }
 

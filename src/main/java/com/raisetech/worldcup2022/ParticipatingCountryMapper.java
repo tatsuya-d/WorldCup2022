@@ -1,4 +1,4 @@
-package com.raisetech.worldCup2022;
+package com.raisetech.worldcup2022;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

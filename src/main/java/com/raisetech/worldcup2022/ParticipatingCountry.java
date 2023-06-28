@@ -1,10 +1,10 @@
-package com.raisetech.worldCup2022;
+package com.raisetech.worldcup2022;
 
 public class ParticipatingCountry {
 
-    private  int id;
-    private  String name;
-    private  String continent;
+    private int id;
+    private String name;
+    private String continent;
 
     public ParticipatingCountry(int id, String name, String continent) {
         this.id = id;
