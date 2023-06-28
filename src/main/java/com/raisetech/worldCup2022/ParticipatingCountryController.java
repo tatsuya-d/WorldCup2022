@@ -10,17 +10,14 @@ import java.util.Optional;
 public class ParticipatingCountryController {
 
     private final ParticipatingCountryMapper participatingCountryMapper;
+
     public ParticipatingCountryController(ParticipatingCountryMapper participatingCountryMapper) {
         this.participatingCountryMapper = participatingCountryMapper;
     }
 
     @GetMapping("/participatingCountry/{id}")
-
     public Optional<ParticipatingCountry> selectNumber(@PathVariable("id")int id) {
         return participatingCountryMapper.findById(id);
     }
-
-
-
 
 }

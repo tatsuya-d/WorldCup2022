@@ -15,10 +15,4 @@ public interface ParticipatingCountryMapper {
     @Select("SELECT * FROM participatingCountry WHERE id = #{id}")
     Optional<ParticipatingCountry> findById(int id);
 
-
-
-
-
-
-
 }
