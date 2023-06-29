@@ -15,9 +15,9 @@ public class ParticipatingCountryController {
         this.participatingCountryMapper = participatingCountryMapper;
     }
 
-    @GetMapping("/participatingCountry/{id}")
-    public Optional<ParticipatingCountry> selectNumber(@PathVariable("id")int id) {
-        return participatingCountryMapper.findById(id);
+    @GetMapping("/participating-country/{continent}")
+    public Optional<ParticipatingCountry> selectNumber(@PathVariable("continent") String continent) {
+        return participatingCountryMapper.findByContinent(continent);
     }
 
 }
