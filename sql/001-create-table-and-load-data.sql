@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS participatingCountry;
 
 CREATE TABLE participatingCountry (
-  id int unsigned AUTO_INCREMENT,
-  name VARCHAR(1000) NOT NULL,
-  continent VARCHAR(1000) NOT NULL,
+ id int unsigned AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  continent VARCHAR(100) NOT NULL ,
   PRIMARY KEY(id)
 );
 

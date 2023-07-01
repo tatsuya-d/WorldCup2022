@@ -1,10 +1,10 @@
-package com.raisetech.worldCup2022;
+package com.raisetech.worldCup2022.Controller;
 
+import com.raisetech.worldCup2022.Entity.ParticipatingCountry;
+import com.raisetech.worldCup2022.Mapper.ParticipatingCountryMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Optional;
 
 @RestController
 public class ParticipatingCountryController {
@@ -15,9 +15,9 @@ public class ParticipatingCountryController {
         this.participatingCountryMapper = participatingCountryMapper;
     }
 
-    @GetMapping("/participatingCountry/{id}")
-    public Optional<ParticipatingCountry> selectNumber(@PathVariable("id")int id) {
-        return participatingCountryMapper.findById(id);
+    @GetMapping("/participating-country/{continent}")
+    public ParticipatingCountry selectNumber(@PathVariable("continent") String continent) {
+        return participatingCountryMapper.findByContinent(continent);
     }
 
 }
