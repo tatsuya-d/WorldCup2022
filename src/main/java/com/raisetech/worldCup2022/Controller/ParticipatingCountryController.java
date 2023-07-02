@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ParticipatingCountryController {
 
@@ -16,8 +18,7 @@ public class ParticipatingCountryController {
     }
 
     @GetMapping("/participating-country/{continent}")
-    public ParticipatingCountry selectNumber(@PathVariable("continent") String continent) {
+    public List<ParticipatingCountry> selectContinent(@PathVariable("continent") String continent) {
         return participatingCountryMapper.findByContinent(continent);
     }
-
 }
