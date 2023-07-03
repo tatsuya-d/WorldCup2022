@@ -1,12 +1,12 @@
-package com.raisetech.worldCup2022.Entity;
+package com.raisetech.worldCup2022.Controller;
 
-public class ParticipatingCountry {
+public class ParticipatingCountryResponse {
 
     private int id;
     private String name;
     private String continent;
 
-    public ParticipatingCountry(int id, String name, String continent) {
+    public ParticipatingCountryResponse(int id, String name, String continent) {
         this.id = id;
         this.name = name;
         this.continent = continent;
