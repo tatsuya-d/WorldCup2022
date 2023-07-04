@@ -9,6 +9,11 @@ import java.util.List;
 @Mapper
 public interface ParticipatingCountryMapper {
 
-    @Select("SELECT * FROM participatingCountry WHERE continent = #{continent} ")
+    @Select("SELECT * FROM participatingCountry WHERE id = #{id}")
+    List<ParticipatingCountry> findById(int id);
+
+    @Select("SELECT * FROM participatingCountry WHERE continent = #{continent}")
     List<ParticipatingCountry> findByContinent(String continent);
 }
+
+
