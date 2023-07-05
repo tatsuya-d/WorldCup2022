@@ -1,8 +1,10 @@
 package com.raisetech.worldCup2022.Mapper;
 
 import com.raisetech.worldCup2022.Entity.ParticipatingCountry;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -14,6 +16,10 @@ public interface ParticipatingCountryMapper {
 
     @Select("SELECT * FROM participatingCountry WHERE continent = #{continent}")
     List<ParticipatingCountry> findByContinent(String continent);
+
+    @Insert("INSERT INTO participatingCountry (id,name,continent) VALUES (#{id},#{name},#{continent})")
+    void createParticipatingCountry(ParticipatingCountry createParticipatingCountry);
+
+    @Update("UPDATE participatingCountry SET id = #{id},#{name},#{continent WHERE id = #{id}")
+    void updateParticipatingCountry(ParticipatingCountry updateParticipatingCountry);
 }
-
-

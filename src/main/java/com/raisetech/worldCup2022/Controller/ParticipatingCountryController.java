@@ -36,7 +36,7 @@ public class ParticipatingCountryController {
     }
 
     @PostMapping("/participating-country")
-    ResponseEntity<Map<String, String>> create(@RequestBody ParticipatingCountryResponse form) {
+    ResponseEntity<Map<String, String>> createParticipatingCountry(@RequestBody ParticipatingCountryResponse form) {
         URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
                 .path("/participating-country")
                 .build()
@@ -49,6 +49,3 @@ public class ParticipatingCountryController {
         return ResponseEntity.ok(Map.of("message", "successfully updated"));
     }
 }
-
-
-
