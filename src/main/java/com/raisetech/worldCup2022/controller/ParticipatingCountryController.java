@@ -1,8 +1,9 @@
-package com.raisetech.worldCup2022.Controller;
+package com.raisetech.worldCup2022.controller;
 
-import com.raisetech.worldCup2022.Entity.ParticipatingCountry;
-import com.raisetech.worldCup2022.Mapper.ParticipatingCountryMapper;
+import com.raisetech.worldCup2022.entity.ParticipatingCountry;
+import com.raisetech.worldCup2022.mapper.ParticipatingCountryMapper;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,7 +46,12 @@ public class ParticipatingCountryController {
     }
 
     @PatchMapping("/participating-country/{id}")
-    ResponseEntity<Map<String, String>> updateId(@PathVariable("id") int number, @RequestBody UpdateForm form) {
+    ResponseEntity<Map<String, String>> updateParticipatingCountry(@PathVariable("id") int id, @RequestBody UpdateForm form) {
         return ResponseEntity.ok(Map.of("message", "successfully updated"));
+    }
+
+    @DeleteMapping("/participating-country/{id}")
+    public ResponseEntity<Void> deleteParticipatingCountry(@PathVariable("id") int delete) {
+        return ResponseEntity.noContent().build();
     }
 }

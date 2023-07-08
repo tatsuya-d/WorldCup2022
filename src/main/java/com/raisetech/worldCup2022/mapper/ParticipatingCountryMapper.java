@@ -1,6 +1,7 @@
-package com.raisetech.worldCup2022.Mapper;
+package com.raisetech.worldCup2022.mapper;
 
-import com.raisetech.worldCup2022.Entity.ParticipatingCountry;
+import com.raisetech.worldCup2022.entity.ParticipatingCountry;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -22,4 +23,7 @@ public interface ParticipatingCountryMapper {
 
     @Update("UPDATE participatingCountry SET id = #{id},#{name},#{continent WHERE id = #{id}")
     void updateParticipatingCountry(ParticipatingCountry updateParticipatingCountry);
+
+    @Delete("DELETE FROM participatingCountry WHERE id = #{id}")
+    void deleteParticipatingCountry(ParticipatingCountry deleteParticipatingCountry);
 }

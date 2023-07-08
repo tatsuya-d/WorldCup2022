@@ -1,4 +1,4 @@
-package com.raisetech.worldCup2022.Controller;
+package com.raisetech.worldCup2022.controller;
 
 public class ParticipatingCountryResponse {
 
