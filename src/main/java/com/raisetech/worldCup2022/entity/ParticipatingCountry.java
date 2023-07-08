@@ -1,4 +1,4 @@
-package com.raisetech.worldCup2022.Entity;
+package com.raisetech.worldCup2022.entity;
 
 public class ParticipatingCountry {
 
