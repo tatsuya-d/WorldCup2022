@@ -1,7 +1,7 @@
 package com.raisetech.worldCup2022.controller;
 
 import com.raisetech.worldCup2022.entity.ParticipatingCountry;
-import com.raisetech.worldCup2022.mapper.ParticipatingCountryMapper;
+import com.raisetech.worldCup2022.service.ParticipatingCountryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,24 +20,24 @@ import java.util.Map;
 @RestController
 public class ParticipatingCountryController {
 
-    private final ParticipatingCountryMapper participatingCountryMapper;
+    private final ParticipatingCountryService participatingCountryService;
 
-    public ParticipatingCountryController(ParticipatingCountryMapper participatingCountryMapper) {
-        this.participatingCountryMapper = participatingCountryMapper;
+    public ParticipatingCountryController(ParticipatingCountryService participatingCountryService) {
+        this.participatingCountryService = participatingCountryService;
     }
 
     @GetMapping("/participating-country")
-    public List<ParticipatingCountry> selectContinent(@RequestParam("continent") String continent) {
-        return participatingCountryMapper.findByContinent(continent);
+    public List<ParticipatingCountry> responseContinent(@RequestParam("continent") String continent) {
+        return participatingCountryService.findByContinent(continent);
     }
 
     @GetMapping("/participating-country/{id}")
-    public List<ParticipatingCountry> selectParticipatingCountry(@PathVariable("id") int id) {
-        return participatingCountryMapper.findById(id);
+    public List<ParticipatingCountry> responseId(@PathVariable("id") int id) {
+        return participatingCountryService.findById(id);
     }
 
     @PostMapping("/participating-country")
-    ResponseEntity<Map<String, String>> createParticipatingCountry(@RequestBody ParticipatingCountryResponse form) {
+    ResponseEntity<Map<String, String>> createParticipatingCountry(@RequestBody ParticipatingCountryForm form) {
         URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
                 .path("/participating-country")
                 .build()
@@ -46,7 +46,7 @@ public class ParticipatingCountryController {
     }
 
     @PatchMapping("/participating-country/{id}")
-    ResponseEntity<Map<String, String>> updateParticipatingCountry(@PathVariable("id") int id, @RequestBody UpdateForm form) {
+    ResponseEntity<Map<String, String>> updateParticipatingCountry(@PathVariable("id") int id, @RequestBody ParticipatingCountryForm form) {
         return ResponseEntity.ok(Map.of("message", "successfully updated"));
     }
 

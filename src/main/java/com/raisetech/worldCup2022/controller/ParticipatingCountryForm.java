@@ -1,16 +1,10 @@
 package com.raisetech.worldCup2022.controller;
 
-public class ParticipatingCountryResponse {
+public class ParticipatingCountryForm {
 
     private int id;
     private String name;
     private String continent;
-
-    public ParticipatingCountryResponse(int id, String name, String continent) {
-        this.id = id;
-        this.name = name;
-        this.continent = continent;
-    }
 
     public int getId() {
         return id;
@@ -22,5 +16,11 @@ public class ParticipatingCountryResponse {
 
     public String getContinent() {
         return continent;
+    }
+
+    public ParticipatingCountryForm(int id, String name, String continent) {
+        this.id = id;
+        this.name = name;
+        this.continent = continent;
     }
 }
