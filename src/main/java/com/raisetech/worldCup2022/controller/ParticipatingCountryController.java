@@ -26,7 +26,7 @@ public class ParticipatingCountryController {
         this.participatingCountryService = participatingCountryService;
     }
 
-    @GetMapping("/participating-country/{continent}")
+    @GetMapping("/participating-country")
     public List<ParticipatingCountry> responseContinent(@RequestParam("continent") String continent) {
         return participatingCountryService.findByContinent(continent);
     }
