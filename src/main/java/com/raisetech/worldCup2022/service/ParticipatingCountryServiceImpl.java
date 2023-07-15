@@ -39,8 +39,8 @@ public class ParticipatingCountryServiceImpl implements ParticipatingCountryServ
     }
 
     @Override
-    public void deleteParticipatingCountry(int id, String name, String continent) {
-        participatingCountryMapper.deleteParticipatingCountry(id, name, continent);
+    public void deleteParticipatingCountry(int id) {
+        participatingCountryMapper.deleteParticipatingCountry(id);
     }
 }
 

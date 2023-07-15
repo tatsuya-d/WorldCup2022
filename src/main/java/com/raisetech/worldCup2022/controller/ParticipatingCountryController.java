@@ -55,7 +55,8 @@ public class ParticipatingCountryController {
 
     @DeleteMapping("/participating-country/{id}")
     public ResponseEntity<Void> deleteParticipatingCountry(@PathVariable("id") int id, ParticipatingCountry delete) {
-        participatingCountryService.deleteParticipatingCountry(delete.getId(), delete.getName(), delete.getContinent());
+        participatingCountryService.deleteParticipatingCountry(delete.getId());
         return ResponseEntity.noContent().build();
     }
+
 }

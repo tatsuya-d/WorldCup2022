@@ -14,5 +14,5 @@ public interface ParticipatingCountryService {
 
     void updateParticipatingCountry(int id, String name, String continent);
 
-    void deleteParticipatingCountry(int id, String name, String continent);
+    void deleteParticipatingCountry(int id);
 }

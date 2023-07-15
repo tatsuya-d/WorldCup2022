@@ -25,5 +25,5 @@ public interface ParticipatingCountryMapper {
     void updateParticipatingCountry(int id, String name, String continent);
 
     @Delete("DELETE FROM participatingCountry WHERE id = #{id}")
-    void deleteParticipatingCountry(int id, String name, String continent);
+    void deleteParticipatingCountry(int id);
 }
