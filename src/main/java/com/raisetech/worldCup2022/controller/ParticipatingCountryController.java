@@ -1,6 +1,7 @@
 package com.raisetech.worldCup2022.controller;
 
 import com.raisetech.worldCup2022.entity.ParticipatingCountry;
+import com.raisetech.worldCup2022.entity.ParticipatingCountryUpdate;
 import com.raisetech.worldCup2022.service.ParticipatingCountryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,21 +38,25 @@ public class ParticipatingCountryController {
     }
 
     @PostMapping("/participating-country")
-    ResponseEntity<Map<String, String>> createParticipatingCountry(@RequestBody ParticipatingCountryForm form) {
-        URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
-                .path("/participating-country")
+    public ResponseEntity<Map<String, String>> createParticipatingCountry(@RequestBody ParticipatingCountryForm form, UriComponentsBuilder uriBuilder) {
+        ParticipatingCountry participatingCountry = participatingCountryService.createParticipatingCountry(form.getId(), form.getName(), form.getContinent());
+        URI url = uriBuilder
+                .path("/participating-country/" + participatingCountry.getId())
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "participating country was successfully created"));
     }
 
     @PatchMapping("/participating-country/{id}")
-    ResponseEntity<Map<String, String>> updateParticipatingCountry(@PathVariable("id") int id, @RequestBody ParticipatingCountryForm form) {
+    public ResponseEntity<Map<String, String>> updateParticipatingCountry(@PathVariable("id") int id, @RequestBody ParticipatingCountryUpdate update) {
+        participatingCountryService.updateParticipatingCountry(id, update.getName(), update.getContinent());
         return ResponseEntity.ok(Map.of("message", "successfully updated"));
     }
 
     @DeleteMapping("/participating-country/{id}")
-    public ResponseEntity<Void> deleteParticipatingCountry(@PathVariable("id") int delete) {
+    public ResponseEntity<Void> deleteParticipatingCountry(@PathVariable("id") int id, ParticipatingCountry delete) {
+        participatingCountryService.deleteParticipatingCountry(delete.getId());
         return ResponseEntity.noContent().build();
     }
+
 }

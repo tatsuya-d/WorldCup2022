@@ -10,7 +10,7 @@ public interface ParticipatingCountryService {
 
     List<ParticipatingCountry> findByContinent(String continent);
 
-    void createParticipatingCountry(int id, String name, String continent);
+    ParticipatingCountry createParticipatingCountry(int id, String name, String continent);
 
     void updateParticipatingCountry(int id, String name, String continent);
 
