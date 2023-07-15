@@ -21,9 +21,9 @@ public interface ParticipatingCountryMapper {
     @Insert("INSERT INTO participatingCountry (id,name,continent) VALUES (#{id},#{name},#{continent})")
     void createParticipatingCountry(ParticipatingCountry createParticipatingCountry);
 
-    @Update("UPDATE participatingCountry SET id = #{id},#{name},#{continent} WHERE id = #{id}")
-    void updateParticipatingCountry(ParticipatingCountry updateParticipatingCountry);
+    @Update("UPDATE participatingCountry SET name = #{name},continent = #{continent} WHERE id = #{id}")
+    void updateParticipatingCountry(int id, String name, String continent);
 
     @Delete("DELETE FROM participatingCountry WHERE id = #{id}")
-    void deleteParticipatingCountry(ParticipatingCountry deleteParticipatingCountry);
+    void deleteParticipatingCountry(int id, String name, String continent);
 }

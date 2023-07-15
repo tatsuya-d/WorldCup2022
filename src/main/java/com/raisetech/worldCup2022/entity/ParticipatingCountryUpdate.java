@@ -1,19 +1,13 @@
 package com.raisetech.worldCup2022.entity;
 
-public class ParticipatingCountry {
+public class ParticipatingCountryUpdate {
 
-    private int id;
     private String name;
     private String continent;
 
-    public ParticipatingCountry(int id, String name, String continent) {
-        this.id = id;
+    public ParticipatingCountryUpdate(String name, String continent) {
         this.name = name;
         this.continent = continent;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getName() {
@@ -22,10 +16,6 @@ public class ParticipatingCountry {
 
     public String getContinent() {
         return continent;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setName(String name) {

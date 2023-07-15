@@ -26,17 +26,21 @@ public class ParticipatingCountryServiceImpl implements ParticipatingCountryServ
     }
 
     @Override
-    public void createParticipatingCountry(int id, String name, String continent) {
-
+    public ParticipatingCountry createParticipatingCountry(int id, String name, String continent) {
+        ParticipatingCountry participatingCountry = new ParticipatingCountry(id, name, continent);
+        participatingCountryMapper.createParticipatingCountry(participatingCountry);
+        return participatingCountry;
     }
 
     @Override
     public void updateParticipatingCountry(int id, String name, String continent) {
+        participatingCountryMapper.updateParticipatingCountry(id, name, continent);
 
     }
 
     @Override
-    public void deleteParticipatingCountry(int id) {
-
+    public void deleteParticipatingCountry(int id, String name, String continent) {
+        participatingCountryMapper.deleteParticipatingCountry(id, name, continent);
     }
 }
+
