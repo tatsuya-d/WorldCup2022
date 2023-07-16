@@ -27,33 +27,33 @@ public class ParticipatingCountryController {
         this.participatingCountryService = participatingCountryService;
     }
 
-    @GetMapping("/participating-country")
+    @GetMapping("/participating-countries")
     public List<ParticipatingCountry> responseContinent(@RequestParam("continent") String continent) {
         return participatingCountryService.findByContinent(continent);
     }
 
-    @GetMapping("/participating-country/{id}")
+    @GetMapping("/participating-countries/{id}")
     public List<ParticipatingCountry> responseId(@PathVariable("id") int id) {
         return participatingCountryService.findById(id);
     }
 
-    @PostMapping("/participating-country")
+    @PostMapping("/participating-countries")
     public ResponseEntity<Map<String, String>> createParticipatingCountry(@RequestBody ParticipatingCountry form, UriComponentsBuilder uriBuilder) {
         ParticipatingCountry participatingCountry = participatingCountryService.createParticipatingCountry(form.getId(), form.getName(), form.getContinent());
         URI url = uriBuilder
-                .path("/participating-country/" + participatingCountry.getId())
+                .path("/participating-countries/" + participatingCountry.getId())
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "participating country was successfully created"));
     }
 
-    @PatchMapping("/participating-country/{id}")
+    @PatchMapping("/participating-countries/{id}")
     public ResponseEntity<Map<String, String>> updateParticipatingCountry(@PathVariable("id") int id, @RequestBody ParticipatingCountryUpdate update) {
         participatingCountryService.updateParticipatingCountry(id, update.getName(), update.getContinent());
         return ResponseEntity.ok(Map.of("message", "successfully updated"));
     }
 
-    @DeleteMapping("/participating-country/{id}")
+    @DeleteMapping("/participating-countries/{id}")
     public ResponseEntity<Void> deleteParticipatingCountry(@PathVariable("id") int id, ParticipatingCountry delete) {
         participatingCountryService.deleteParticipatingCountry(delete.getId());
         return ResponseEntity.noContent().build();
