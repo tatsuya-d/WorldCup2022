@@ -38,7 +38,7 @@ public class ParticipatingCountryController {
     }
 
     @PostMapping("/participating-country")
-    public ResponseEntity<Map<String, String>> createParticipatingCountry(@RequestBody ParticipatingCountryForm form, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<Map<String, String>> createParticipatingCountry(@RequestBody ParticipatingCountry form, UriComponentsBuilder uriBuilder) {
         ParticipatingCountry participatingCountry = participatingCountryService.createParticipatingCountry(form.getId(), form.getName(), form.getContinent());
         URI url = uriBuilder
                 .path("/participating-country/" + participatingCountry.getId())
