@@ -1,6 +1,5 @@
 package com.raisetech.worldCup2022.service;
 
-import com.raisetech.worldCup2022.controller.ParticipatingCountryForm;
 import com.raisetech.worldCup2022.entity.ParticipatingCountry;
 import com.raisetech.worldCup2022.mapper.ParticipatingCountryMapper;
 import org.springframework.stereotype.Service;
@@ -27,10 +26,10 @@ public class ParticipatingCountryServiceImpl implements ParticipatingCountryServ
     }
 
     @Override
-    public ParticipatingCountryForm createParticipatingCountry(String name, String continent) {
-        ParticipatingCountryForm participatingCountryForm = new ParticipatingCountryForm(name, continent);
-        participatingCountryMapper.createParticipatingCountry(participatingCountryForm);
-        return participatingCountryForm;
+    public ParticipatingCountry createParticipatingCountry(int id, String name, String continent) {
+        ParticipatingCountry participatingCountry = new ParticipatingCountry(id, name, continent);
+        participatingCountryMapper.createParticipatingCountry(participatingCountry);
+        return participatingCountry;
     }
 
     @Override

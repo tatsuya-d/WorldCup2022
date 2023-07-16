@@ -38,10 +38,10 @@ public class ParticipatingCountryController {
     }
 
     @PostMapping("/participating-country")
-    public ResponseEntity<Map<String, String>> createParticipatingCountry(@RequestBody ParticipatingCountryForm form, UriComponentsBuilder uriBuilder) {
-        ParticipatingCountryForm participatingCountryForm = participatingCountryService.createParticipatingCountry(form.getName(), form.getContinent());
+    public ResponseEntity<Map<String, String>> createParticipatingCountry(@RequestBody ParticipatingCountry form, UriComponentsBuilder uriBuilder) {
+        ParticipatingCountry participatingCountry = participatingCountryService.createParticipatingCountry(form.getId(), form.getName(), form.getContinent());
         URI url = uriBuilder
-                .path("/participating-country/" + participatingCountryForm)
+                .path("/participating-country/" + participatingCountry.getId())
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "participating country was successfully created"));
