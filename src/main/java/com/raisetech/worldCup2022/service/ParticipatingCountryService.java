@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ParticipatingCountryService {
 
-    List<ParticipatingCountry> findById(int id);
+    ParticipatingCountry findById(int id);
 
     List<ParticipatingCountry> findByContinent(String continent);
 

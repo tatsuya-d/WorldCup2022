@@ -9,12 +9,13 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface ParticipatingCountryMapper {
 
     @Select("SELECT * FROM participatingCountry WHERE id = #{id}")
-    List<ParticipatingCountry> findById(int id);
+    Optional<ParticipatingCountry> findById(int id);
 
     @Select("SELECT * FROM participatingCountry WHERE continent = #{continent}")
     List<ParticipatingCountry> findByContinent(String continent);
