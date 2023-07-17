@@ -20,7 +20,7 @@ public class ParticipatingCountryServiceImpl implements ParticipatingCountryServ
     @Override
     public ParticipatingCountry findById(int id) {
         Optional<ParticipatingCountry> participatingCountry = participatingCountryMapper.findById(id);
-        return participatingCountry.orElseThrow(() -> new ResourceNotFoundException("resource not found:" + id));
+        return participatingCountry.orElseThrow(() -> new ResourceNotFoundException("resource not found: " + id));
     }
 
     @Override
