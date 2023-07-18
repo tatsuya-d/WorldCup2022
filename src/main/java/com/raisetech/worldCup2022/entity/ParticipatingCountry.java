@@ -2,6 +2,7 @@ package com.raisetech.worldCup2022.entity;
 
 public class ParticipatingCountry {
 
+
     private int id;
     private String name;
     private String continent;

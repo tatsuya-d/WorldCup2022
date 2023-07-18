@@ -1,10 +1,14 @@
 package com.raisetech.worldCup2022.controller;
 
+import com.raisetech.worldCup2022.ResourceNotFoundException;
 import com.raisetech.worldCup2022.entity.ParticipatingCountry;
 import com.raisetech.worldCup2022.entity.ParticipatingCountryUpdate;
 import com.raisetech.worldCup2022.service.ParticipatingCountryService;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.ZonedDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +39,7 @@ public class ParticipatingCountryController {
     }
 
     @GetMapping("/participating-countries/{id}")
-    public List<ParticipatingCountry> responseId(@PathVariable("id") int id) {
+    public ParticipatingCountry responseId(@PathVariable("id") int id) {
         return participatingCountryService.findById(id);
     }
 
@@ -59,4 +65,15 @@ public class ParticipatingCountryController {
         return ResponseEntity.noContent().build();
     }
 
+    @ExceptionHandler(value = ResourceNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleNoResourceFound(
+            ResourceNotFoundException e, HttpServletRequest request) {
+        Map<String, String> body = new HashMap<>();
+        body.put("timestamp", ZonedDateTime.now().toString());
+        body.put("status", String.valueOf(HttpStatus.NOT_FOUND.value()));
+        body.put("error", HttpStatus.NOT_FOUND.getReasonPhrase());
+        body.put("message", e.getMessage());
+        body.put("path", request.getRequestURI());
+        return new ResponseEntity(body, HttpStatus.NOT_FOUND);
+    }
 }
